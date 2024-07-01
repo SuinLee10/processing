@@ -1,0 +1,11 @@
+size(300, 300);
+float px, py;
+px = 150;
+py = 150;
+ellipse(px, py, 60, 60);
+triangle(px, py-10, px-10, py-5, px-10, py-15);
+triangle(px-30, py, px-50, py-10, px-50, py+10);
+fill(0, 0, 0);
+ellipse(px+ 20, py - 10 ,5, 5);
+noFill();
+arc(px+30, py, 60, 60, radians(120), radians(240));
