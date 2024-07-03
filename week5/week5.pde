@@ -3,15 +3,26 @@ void setup(){
   background(99, 56, 5);
   carX = width/2;
 }
-int carX= width/2, carY = 560;
-
+float carX= width/2, carY = 560;
+int direction = -1;
 void draw(){
   gradation(56);
-  drawTree(carY);
-  drawRoad(carY);
-  drawCar(carX, carY);
-  drawTree(carY + 100);
-  drawMidLine(carY);
+  drawTree(560);
+  drawRoad(560);
+  drawMidLine(560);
+  carX += 2 * direction;
+  if((carX == width + 50)||(carX == -50)){
+    direction = - direction;
+  }
+  if(direction == 1){
+   carY = 610;
+  }else {
+    carY = 560;
+  }
+  drawCar(carX, carY, direction);
+  
+  drawTree(660);
+
 }
 //도로 
 void drawRoad(int y){
@@ -20,13 +31,17 @@ void drawRoad(int y){
   rect(0, y, width, 100);
 }
 //자동차 
-void drawCar(float x, float y){
+void drawCar(float x, float y, int direction){
   //자동차 몸통 
   fill(20, 140, 200);
   rectMode(CENTER);
   rect(x, y, 100, 40);
   rectMode(CORNER);
-  rect(x - 10, y - 40, 60, 20);
+  if(direction == -1){
+    rect(x - 10, y - 40, 60, 20);
+  }else{
+    rect(x - 50, y - 40, 60, 20);
+  }
   //자동차 바퀴 
   fill(0, 0, 0);
   ellipse(x - 25,y + 20, 30, 30);
